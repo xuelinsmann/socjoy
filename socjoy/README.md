@@ -6,3 +6,5 @@ This is a quickstart skeleton for building a site based on Elgg 3.x.
 ## Installation
 
 Follow the instructions for [installing Elgg with Composer](http://learn.elgg.org/en/stable/intro/install.html#overview).
+
+## Thhis has been customized to www.socjoy.com
