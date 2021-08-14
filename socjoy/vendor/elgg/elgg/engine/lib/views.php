@@ -495,6 +495,9 @@ function _elgg_views_prepare_head($title) {
 function _elgg_views_prepare_favicon_links(\Elgg\Hook $hook) {
 	$head_params = $hook->getValue();
 
+	// linxue
+	// change default icon to socjoy icons.
+
 	$head_params['links']['apple-touch-icon'] = [
 		'rel' => 'apple-touch-icon',
 		'href' => elgg_get_simplecache_url('graphics/socjoy160.png'),

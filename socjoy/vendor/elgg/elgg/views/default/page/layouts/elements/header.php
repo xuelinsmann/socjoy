@@ -23,7 +23,7 @@ if (!isset($header)) {
 	$menu_params['sort_by'] = 'priority';
 	$menu_params['class'] = 'elgg-menu-hz';
 	$buttons = elgg_view_menu('title', $menu_params);
-	
+
 	$header = $title . $buttons;
 }
 

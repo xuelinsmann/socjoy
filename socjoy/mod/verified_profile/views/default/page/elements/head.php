@@ -11,7 +11,18 @@
 
 $metas = elgg_extract('metas', $vars, []);
 $links = elgg_extract('links', $vars, []);
-echo elgg_format_element('title', [], ucfirst(elgg_get_context()) . ' : ' . elgg_get_site_entity()->getDisplayName(), ['encode_text' => true]);
+// linxue
+// Customize title
+// hard code some of these to move fast.
+$page_name = ucfirst(elgg_get_context());
+if ($page_name == 'Elgg_connect') {
+	$page_name = 'Main';
+} else if ($page_name == 'Photos') {
+	$page_name = 'Joys';
+} else if ($page_name == 'Groups') {
+	$page_name = 'Clubs';
+}
+echo elgg_format_element('title', [], elgg_get_site_entity()->getDisplayName() . ' : ' . $page_name, ['encode_text' => true]);
 foreach ($metas as $attributes) {
     echo elgg_format_element('meta', $attributes);
 }

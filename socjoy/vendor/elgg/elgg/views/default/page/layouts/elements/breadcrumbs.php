@@ -33,4 +33,3 @@ if (!$breadcrumbs) {
 <div class="elgg-layout-breadcrumbs clearfix">
 	<?= $breadcrumbs ?>
 </div>
-
