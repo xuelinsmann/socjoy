@@ -329,12 +329,12 @@ function elgg_prepend_css_urls($css, $path) {
  * @since  1.8
  */
 function elgg_view_page($title, $body, $page_shell = 'default', $vars = []) {
-	
+
 	if (is_array($body)) {
 		$body['title'] = elgg_extract('title', $body, $title);
 		$body = elgg_view_layout('default', $body);
 	}
-	
+
 	$timer = _elgg_services()->timer;
 	if (!$timer->hasEnded(['build page'])) {
 		$timer->end(['build page']);
@@ -494,46 +494,46 @@ function _elgg_views_prepare_head($title) {
  */
 function _elgg_views_prepare_favicon_links(\Elgg\Hook $hook) {
 	$head_params = $hook->getValue();
-	
+
 	$head_params['links']['apple-touch-icon'] = [
 		'rel' => 'apple-touch-icon',
-		'href' => elgg_get_simplecache_url('graphics/favicon-128.png'),
+		'href' => elgg_get_simplecache_url('graphics/socjoy160.png'),
 	];
 
 	// favicons
-	$head_params['links']['icon-ico'] = [
+	/*$head_params['links']['icon-ico'] = [
 		'rel' => 'icon',
 		'href' => elgg_get_simplecache_url('graphics/favicon.ico'),
-	];
+	];*/
 	$head_params['links']['icon-vector'] = [
 		'rel' => 'icon',
 		'sizes' => '16x16 32x32 48x48 64x64 128x128',
 		'type' => 'image/svg+xml',
-		'href' => elgg_get_simplecache_url('graphics/favicon.svg'),
+		'href' => elgg_get_simplecache_url('graphics/socjoy.svg'),
 	];
 	$head_params['links']['icon-16'] = [
 		'rel' => 'icon',
 		'sizes' => '16x16',
 		'type' => 'image/png',
-		'href' => elgg_get_simplecache_url('graphics/favicon-16.png'),
+		'href' => elgg_get_simplecache_url('graphics/socjoy40.png'),
 	];
 	$head_params['links']['icon-32'] = [
 		'rel' => 'icon',
 		'sizes' => '32x32',
 		'type' => 'image/png',
-		'href' => elgg_get_simplecache_url('graphics/favicon-32.png'),
+		'href' => elgg_get_simplecache_url('graphics/socjoy80.png'),
 	];
 	$head_params['links']['icon-64'] = [
 		'rel' => 'icon',
 		'sizes' => '64x64',
 		'type' => 'image/png',
-		'href' => elgg_get_simplecache_url('graphics/favicon-64.png'),
+		'href' => elgg_get_simplecache_url('graphics/socjoy160.png'),
 	];
 	$head_params['links']['icon-128'] = [
 		'rel' => 'icon',
 		'sizes' => '128x128',
 		'type' => 'image/png',
-		'href' => elgg_get_simplecache_url('graphics/favicon-128.png'),
+		'href' => elgg_get_simplecache_url('graphics/socjoy160.png'),
 	];
 
 	return $head_params;
@@ -577,11 +577,11 @@ function elgg_view_layout($layout_name, $vars = []) {
 	if (in_array($layout_name, ['content', 'one_sidebar', 'one_column', 'two_sidebar'])) {
 		elgg_deprecated_notice("Using the '{$layout_name}' layout is deprecated. Please update your code to use the 'default' layout.", '3.3');
 	}
-	
+
 	if ($layout_name !== 'content' && isset($vars['filter_context'])) {
 		elgg_deprecated_notice("Using 'filter_context' to set the active menu item is not supported. Please update your code to use the 'filter_value' var.", '3.3');
 	}
-	
+
 	// Help plugins transition without breaking them
 	switch ($layout_name) {
 		case 'content' :
@@ -826,7 +826,7 @@ function elgg_view_entity(\ElggEntity $entity, array $vars = []) {
 	];
 
 	$vars = array_merge($defaults, $vars);
-	
+
 	if (elgg_extract('register_rss_link', $vars, elgg_extract('full_view', $vars))) {
 		elgg_register_rss_link();
 	}
@@ -999,7 +999,7 @@ function elgg_view_entity_list($entities, array $vars = []) {
 	if (!elgg_view_exists($view)) {
 		$view = 'page/components/list';
 	}
-	
+
 	return elgg_view($view, $vars);
 }
 
@@ -1047,7 +1047,7 @@ function elgg_view_annotation_list($annotations, array $vars = []) {
 	if (!elgg_view_exists($view)) {
 		$view = 'page/components/list';
 	}
-	
+
 	return elgg_view($view, $vars);
 }
 
@@ -1083,19 +1083,19 @@ function elgg_view_relationship_list($relationships, array $vars = []) {
 		'list_type' => $list_type,
 		'offset_key' => 'reloff',
 	];
-	
+
 	$vars = array_merge($defaults, $vars);
-	
+
 	if (!$vars['limit'] && !$vars['offset']) {
 		// no need for pagination if listing is unlimited
 		$vars['pagination'] = false;
 	}
-	
+
 	$view = "page/components/{$vars['list_type']}";
 	if (!elgg_view_exists($view)) {
 		$view = 'page/components/list';
 	}
-	
+
 	return elgg_view($view, $vars);
 }
 
@@ -1119,21 +1119,21 @@ function elgg_view_relationship(\ElggRelationship $relationship, array $vars = [
 	$defaults = [
 		'full_view' => true,
 	];
-	
+
 	$vars = array_merge($defaults, $vars);
 	$vars['relationship'] = $relationship;
-	
+
 	$name = $relationship->relationship;
 	if (empty($name)) {
 		return false;
 	}
-	
+
 	$relationship_views = [
 		elgg_extract('item_view', $vars, ''),
 		"relationship/$name",
 		"relationship/default",
 	];
-	
+
 	$contents = '';
 	foreach ($relationship_views as $view) {
 		if (elgg_view_exists($view)) {
@@ -1141,7 +1141,7 @@ function elgg_view_relationship(\ElggRelationship $relationship, array $vars = [
 			break;
 		}
 	}
-	
+
 	return $contents;
 }
 
@@ -1193,7 +1193,7 @@ function elgg_view_friendly_time($time) {
  * @return string|false Rendered comments or false on failure
  */
 function elgg_view_comments($entity, $add_comment = true, array $vars = []) {
-	
+
 	if (!$entity instanceof \ElggEntity) {
 		return false;
 	}
@@ -1206,7 +1206,7 @@ function elgg_view_comments($entity, $add_comment = true, array $vars = []) {
 	if ($output !== false) {
 		return $output;
 	}
-	
+
 	return elgg_view('page/elements/comments', $vars);
 }
 
@@ -1300,7 +1300,7 @@ function elgg_view_river_item($item, array $vars = []) {
 		// subject is disabled or subject/object deleted
 		return '';
 	}
-	
+
 	if (elgg_extract('register_rss_link', $vars)) {
 		elgg_register_rss_link();
 	}
@@ -1451,7 +1451,7 @@ function elgg_view_field(array $params = []) {
 	if (!empty($params['#html'])) {
 		return $params['#html'];
 	}
-	
+
 	if (empty($params['#type'])) {
 		_elgg_services()->logger->error(__FUNCTION__ . '(): $params["#type"] is required.');
 		return '';
@@ -1499,13 +1499,13 @@ function elgg_view_field(array $params = []) {
 		'#view' => ELGG_ENTITIES_ANY_VALUE,
 	];
 	$params = array_merge($defaults, $params);
-	
+
 	// first pass non-hash keys into both
 	$split_params = _elgg_split_vars($params);
 
 	// $vars passed to input/$input_name
 	$input_vars = $split_params[''];
-	
+
 	// $vars passed to label, help and field wrapper views
 	$element_vars = array_merge($split_params[''], $split_params['#']);
 
@@ -1670,7 +1670,7 @@ function _elgg_views_minify(\Elgg\Hook $hook) {
 	}
 
 	$content = $hook->getValue();
-	
+
 	if ($hook->getType() === 'js') {
 		if (_elgg_config()->simplecache_minify_js) {
 			return JSMin::minify($content);
@@ -1749,7 +1749,7 @@ function elgg_views_boot() {
 
 	elgg_register_external_file('css', 'font-awesome', elgg_get_simplecache_url('font-awesome/css/all.min.css'));
 	elgg_load_external_file('css', 'font-awesome');
-	
+
 	elgg_define_js('cropperjs', [
 		'src' => elgg_get_simplecache_url('cropperjs/cropper.min.js'),
 	]);
@@ -1939,7 +1939,7 @@ function _elgg_view_under_viewtype($view, $vars, $viewtype) {
  */
 function _elgg_set_lightbox_config(\Elgg\Hook $hook) {
 	$return = $hook->getValue();
-	
+
 	$return['lightbox'] = [
 		'current' => elgg_echo('js:lightbox:current', ['{current}', '{total}']),
 		'previous' => elgg_view_icon('caret-left'),
@@ -2687,7 +2687,7 @@ function _elgg_map_icon_glyph_class(array $classes, $map_sprites = true) {
 
 				$base_icon = elgg_extract($base_icon, $legacy_sprites, $base_icon);
 			}
-			
+
 			// map solid/regular/light iconnames to correct classes
 			if (preg_match('/.*-solid$/', $base_icon)) {
 				$base_icon = preg_replace('/(.*)-solid$/', '$1', $base_icon);
