@@ -18,8 +18,8 @@ if (!$album->getContainerEntity()->canWriteToContainer()) {
 	return;
 }
 
-elgg_push_collection_breadcrumbs('object', TidypicsImage::SUBTYPE, $album);
-elgg_push_breadcrumb(elgg_echo('add:object:image'));
+//elgg_push_collection_breadcrumbs('object', TidypicsImage::SUBTYPE, $album);
+//elgg_push_breadcrumb(elgg_echo('add:object:image'));
 
 $title = elgg_echo('add:object:image');
 
