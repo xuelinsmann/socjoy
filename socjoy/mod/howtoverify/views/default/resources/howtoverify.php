@@ -7,9 +7,9 @@ if (!$user) {
     echo elgg_view_page('Howtoverify', [
         'title' => 'Become a verified collector!',
         'content' => '
-        <b>Verified collectors are collectors with at least 10 authentic football collection items such as match worn,
-        match prepared, match issued, signed jerseys/boots/other collections. Our Socjoy collection
-        expert board members who have more than 20 years of football collection experience do our best
+        <b>Verified collectors are collectors with a decent amount of authentic football collection items
+        such as match worn, match prepared, match issued, signed jerseys/boots/other collections. Our Socjoy
+        collection expert board members who have more than 20 years of football collection experience do our best
         to verify collectors all around the world.<br>
         <br>After you register your account, please come back to this page and drop us a message with
         your proof of authentic football collections, including match worn, match prepared, match issued,
@@ -30,7 +30,7 @@ echo elgg_view_page(elgg_echo('messages:add'), [
     'title' => 'Become a verified collector!',
     'subtitle' => 'asdfasdfdsafadsfasdfsd',
 	'content' => '
-    <b>Verified collectors are collectors with at least 10 authentic football collection items
+    <b>Verified collectors are collectors with a decent amount of authentic football collection items
     such as match worn, match prepared, match issued, signed jerseys/boots/other collections.
     Our Socjoy collection expert board members who have more than 20 years of football collection
     experience do our best to verify collectors all around the world.<br>
